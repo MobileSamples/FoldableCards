@@ -32,7 +32,7 @@ Now, add the following code in the View Controller TableviewCell file. This will
     add createAnimationItemView()
     add configureAnimationItems()
 
-**NOTE - **The above functions are for basic animation. There is a code stack for advanced animation later in the steps. 
+**NOTE -** The above functions are for basic animation. There is a code stack for advanced animation later in the steps. 
 
 ### Step 3 - Level up Your Animation Game - Advanced Animation Code Stack
 This step will improve the animation quality, speed and will help in enhancing the overall UI. Delegate the below two functions in the View Controller TableviewCell file to move the graphics in an ultra-modern and advanced way.
