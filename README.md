@@ -168,7 +168,7 @@ To open another cardview, this method will help you:
 Everything is set up! You can run the project. Thank You! Hope this will help you!
 
 ## Endnote - Concluding Foldable Expanding Cardview in iOS Mobile Apps
-We hope the above-mentioned card folding and unfolding code stack helps you to deploy the foldable card coneot in your app easily. 
+We hope the above-mentioned card folding and unfolding code stack helps you to deploy the foldable card concept in your app easily. 
 
 **Credits - Our experienced iOS developer Nishee developed this code.**
 
