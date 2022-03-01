@@ -7,17 +7,34 @@
 
 import UIKit
 
+struct FoodTypes
+{
+    var imageName : String = ""
+    var foodTypeName : String = ""
+    var foodArray : [FoodDetails] = []
+}
+
+struct FoodDetails
+{
+    var imageName : String = ""
+    var foodName : String = ""
+    var foodDescription : String = ""
+    var foodPrice : String = ""
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tblFolding: UITableView!
     
     enum Const {
         static let closeCellHeight: CGFloat = 120
-        static let openCellHeight: CGFloat = 355
+        static let openCellHeight: CGFloat = 350
         static let rowsCount = 3
     }
     
     var cellHeights: [CGFloat] = []
+    
+    var foodTypeArray : [FoodTypes] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +42,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tblFolding.delegate = self
         tblFolding.dataSource = self
         setup()
+        self.setupFoodTypesArray()
     }
     
     private func setup() {
@@ -48,6 +66,44 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self?.tblFolding.reloadData()
         })
     }
+    
+    func addCornerRadious(_ object: AnyObject, redious radious: CGFloat,withcolour colour:UIColor,borderWidth : CGFloat)
+    {
+        let view: UIView = (object as! UIView)
+        view.layer.cornerRadius = radious
+        view.layer.masksToBounds = true
+        view.layer.borderColor = colour.cgColor
+        view.layer.borderWidth = borderWidth
+    }
+    
+    func setupFoodTypesArray()
+    {
+        self.foodTypeArray = [FoodTypes(imageName: "ic_pizza",
+                                        foodTypeName: "Pizzas",
+                                        foodArray: [FoodDetails(imageName: "ic_pizza_mania",
+                                                                foodName: "Pizza Mania",
+                                                                foodDescription: "Get fresh non-veg Pizza with your choice with creamy tomato, cheesy jalapeno and more.", foodPrice: "$ 09.00"),
+                                                    FoodDetails(imageName: "ic_margherita_pizza",
+                                                                foodName: "Margherita Pizza",
+                                                                foodDescription: "Red tomato sauce, white mozzarella and fresh green basil. When all of these delicious flavours are combined on a hand-kneaded.", foodPrice: "$ 06.00")]),
+                              FoodTypes(imageName: "ic_shushi",
+                                        foodTypeName: "Sushi",
+                                        foodArray: [FoodDetails(imageName: "ic_california_roll",
+                                                                foodName: "California Roll",
+                                                                foodDescription: "Crabstick, Tobiko, Cucumber, Avocado With Japanese Mayo.", foodPrice: "$ 45.00"),
+                                                    FoodDetails(imageName: "ic_salmon_maki",
+                                                                foodName: "Salmon Maki",
+                                                                foodDescription: "Atlantic Salmon, Avocado And Tempura Flakes With Japanese Mayo. Chef'S Special!.", foodPrice: "$ 20.00")]),
+                              FoodTypes(imageName: "ic_burrito",
+                                        foodTypeName: "Burrito",
+                                        foodArray: [FoodDetails(imageName: "ic_california_roll",
+                                                                foodName: "Mexican Burrito",
+                                                                foodDescription: "Cilantro rice, chillaque paneer, grilled corn, stuffed pepper, parsley sour cream, salsa.", foodPrice: "$ 05.75"),
+                                                    FoodDetails(imageName: "ic_salmon_maki",
+                                                                foodName: "Breakfast Burrito",
+                                                                foodDescription: "Breakfast In A Wrap! Crispy Hash Brown, Scrambled Eggs, Sauteed Mushroom, Tomato, Onion & Cheese Rolled Into A Wrap.", foodPrice: "$ 03.80")])
+        ]
+    }
 }
 
 // MARK: - TableView
@@ -55,7 +111,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 extension ViewController {
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 3
+        return self.foodTypeArray.count
     }
 
     func tableView(_: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -73,9 +129,53 @@ extension ViewController {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DemoCell", for: indexPath) as! TblFoldingCell
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1)
+        {
+            self.addCornerRadious(cell.foregroundView, redious: 21, withcolour: .clear, borderWidth: 0)
+            self.addCornerRadious(cell.ivFoodType, redious: 10, withcolour: .clear, borderWidth: 0)
+            self.addCornerRadious(cell.viewRatingContainer, redious: 6, withcolour: .clear, borderWidth: 0)
+            
+            self.addCornerRadious(cell.containerView, redious: 21, withcolour: .clear, borderWidth: 0)
+            self.addCornerRadious(cell.ivHeaderFoodType, redious: 10, withcolour: .clear, borderWidth: 0)
+            self.addCornerRadious(cell.viewHeaderRatingContainer, redious: 6, withcolour: .clear, borderWidth: 0)
+            
+            self.addCornerRadious(cell.viewFoodOneContainer, redious: 21, withcolour: .clear, borderWidth: 0)
+            self.addCornerRadious(cell.ivFoodOne, redious: 9, withcolour: .clear, borderWidth: 0)
+            self.addCornerRadious(cell.lblFoodOnePrice, redious: 0.5 * cell.lblFoodOnePrice.bounds.height, withcolour: .clear, borderWidth: 0)
+            
+            self.addCornerRadious(cell.viewFoodTwoContainer, redious: 21, withcolour: .clear, borderWidth: 0)
+            self.addCornerRadious(cell.ivFoodTwo, redious: 9, withcolour: .clear, borderWidth: 0)
+            self.addCornerRadious(cell.lblFoodTwoPrice, redious: 0.5 * cell.lblFoodTwoPrice.bounds.height, withcolour: .clear, borderWidth: 0)
+        }
+        
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
         cell.durationsForExpandedState = durations
         cell.durationsForCollapsedState = durations
+        
+        let row = self.foodTypeArray[indexPath.row]
+        
+        cell.ivFoodType.image = UIImage(named: row.imageName)
+        cell.lblFoodType.text = row.foodTypeName
+        
+        cell.ivHeaderFoodType.image = UIImage(named: row.imageName)
+        cell.lblHeaderFoodType.text = row.foodTypeName
+        
+        if row.foodArray.count > 0,
+            let firstObj = row.foodArray.first,
+            let lastObj = row.foodArray.last
+        {
+            cell.ivFoodOne.image = UIImage(named: firstObj.imageName)
+            cell.lblFoodOneName.text = firstObj.foodName
+            cell.lblFoodOneDescription.text = firstObj.foodDescription
+            cell.lblFoodOnePrice.text = firstObj.foodPrice
+            
+            cell.ivFoodTwo.image = UIImage(named: lastObj.imageName)
+            cell.lblFoodTwoName.text = lastObj.foodName
+            cell.lblFoodTwoDescription.text = lastObj.foodDescription
+            cell.lblFoodTwoPrice.text = lastObj.foodPrice
+        }
+        
         return cell
     }
 
@@ -159,10 +259,30 @@ class TblFoldingCell: UITableViewCell {
     @IBInspectable open var itemCount: NSInteger = 2
     
     // The color of the back cell
-    @IBInspectable open var backViewColor: UIColor = UIColor.lightGray
+    @IBInspectable open var backViewColor: UIColor = UIColor.init(hex: "5F5F5F")
     
     var animationItemViews: [RotatedView]?
-
+    
+    @IBOutlet weak var viewRatingContainer: UIView!
+    @IBOutlet weak var ivFoodType: UIImageView!
+    @IBOutlet weak var lblFoodType: UILabel!
+    
+    @IBOutlet weak var viewHeaderRatingContainer: UIView!
+    @IBOutlet weak var ivHeaderFoodType: UIImageView!
+    @IBOutlet weak var lblHeaderFoodType: UILabel!
+    
+    @IBOutlet weak var viewFoodOneContainer: UIView!
+    @IBOutlet weak var ivFoodOne: UIImageView!
+    @IBOutlet weak var lblFoodOneName: UILabel!
+    @IBOutlet weak var lblFoodOneDescription: UILabel!
+    @IBOutlet weak var lblFoodOnePrice: UILabel!
+    
+    @IBOutlet weak var viewFoodTwoContainer: UIView!
+    @IBOutlet weak var ivFoodTwo: UIImageView!
+    @IBOutlet weak var lblFoodTwoName: UILabel!
+    @IBOutlet weak var lblFoodTwoDescription: UILabel!
+    @IBOutlet weak var lblFoodTwoPrice: UILabel!
+    
     @objc public enum AnimationType : Int {
         case open
         case close
@@ -610,4 +730,25 @@ fileprivate func convertFromCAMediaTimingFunctionName(_ input: CAMediaTimingFunc
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertToCAMediaTimingFunctionName(_ input: String) -> CAMediaTimingFunctionName {
     return CAMediaTimingFunctionName(rawValue: input)
+}
+
+extension UIColor {
+    convenience init(hex: String) {
+        let scanner = Scanner(string: hex)
+        scanner.scanLocation = 0
+        
+        var rgbValue: UInt64 = 0
+        
+        scanner.scanHexInt64(&rgbValue)
+        
+        let r = (rgbValue & 0xff0000) >> 16
+        let g = (rgbValue & 0xff00) >> 8
+        let b = rgbValue & 0xff
+        
+        self.init(
+            red: CGFloat(r) / 0xff,
+            green: CGFloat(g) / 0xff,
+            blue: CGFloat(b) / 0xff, alpha: 1
+        )
+    }
 }

@@ -13,6 +13,7 @@
 		349312562754E900000E8710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 349312542754E900000E8710 /* Main.storyboard */; };
 		349312582754E902000E8710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349312572754E902000E8710 /* Assets.xcassets */; };
 		3493125B2754E902000E8710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 349312592754E902000E8710 /* LaunchScreen.storyboard */; };
+		889C36CE27BBBD5C002010E9 /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C36CD27BBBD5C002010E9 /* CosmosDistrib.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		349312572754E902000E8710 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3493125A2754E902000E8710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3493125C2754E902000E8710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		889C36CD27BBBD5C002010E9 /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				3493124E2754E900000E8710 /* AppDelegate.swift */,
 				349312502754E900000E8710 /* SceneDelegate.swift */,
+				889C36CD27BBBD5C002010E9 /* CosmosDistrib.swift */,
 				349312522754E900000E8710 /* ViewController.swift */,
 				349312542754E900000E8710 /* Main.storyboard */,
 				349312572754E902000E8710 /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 				349312532754E900000E8710 /* ViewController.swift in Sources */,
 				3493124F2754E900000E8710 /* AppDelegate.swift in Sources */,
 				349312512754E900000E8710 /* SceneDelegate.swift in Sources */,
+				889C36CE27BBBD5C002010E9 /* CosmosDistrib.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +293,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LNR2265795;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TblFoldingCell/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -296,6 +301,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,7 +311,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -316,6 +322,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LNR2265795;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TblFoldingCell/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -323,6 +330,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,7 +340,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
