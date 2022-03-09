@@ -10,6 +10,8 @@ Two **characteristics** that make foldable layout an integral part of iOS mobile
 * Good design
 * Great usability
 
+![Alt Text](https://eww-wp-new.s3.ap-south-1.amazonaws.com/wp-content/uploads/2022/03/02123724/GIF-02.gif)
+
 ## Language
 Swift
 
